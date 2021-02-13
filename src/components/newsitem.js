@@ -3,7 +3,8 @@ import React from "react";
 class NewsItem extends React.Component { 
     render(){
         const prop = this.props
-        console.log(prop)
+        const date = new Date(prop.publishedAt);
+        const date_string = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
         return (
             
             <div className="newsItem">
@@ -16,13 +17,13 @@ class NewsItem extends React.Component {
                 <div className="newsDesc">
                     <p>
                         {prop.description}
-                        <a href='/news_details'>learn more</a>
+                        <a href={prop.url}>learn more</a>
                     </p>
                 </div>
                 <div className="author-container">
                     <div className="flexer">
                         <div>Author Name: {prop.author} </div>
-                        <div>Published At: {prop.publishedAt} </div>
+                        <div>Published At: {date_string} </div>
                         <div> Source: {prop.source.name}</div>
                     </div>
                     <div className="flexer">

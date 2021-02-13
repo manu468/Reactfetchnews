@@ -165,7 +165,7 @@ class Home extends React.Component {
         }
 
         //For Pagination
-        console.log(this.state, 'from URL build')
+        // console.log(this.state, 'from URL build')
         if(this.state.currentPage > 1) {
             urlString.searchParams.append('page', this.state.currentPage)
         }
@@ -204,11 +204,11 @@ class Home extends React.Component {
         }
 
         else if(page_label === "next") {
-            console.log(this.state)
+            // console.log(this.state)
             if(this.state.nextPageAvailable) {
                 canSendRequest = true;
                 this.setState({currentPage: ++this.state.currentPage });
-                console.log(this.state, "this is after increment")
+                // console.log(this.state, "this is after increment")
             }
 
         }

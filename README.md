@@ -1,5 +1,5 @@
 # To run the cloned project
-Make sure to run npm install after you clone the project and before running the application using npm start
+Make sure to run npm install after you clone the project and before running the application using npm start.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

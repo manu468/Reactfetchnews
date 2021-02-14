@@ -3,14 +3,12 @@ import logo from '../images/filter_icon2.jpeg';
 
 class SearchBar extends React.Component {
     state = {
-        handleSubmit: null,
         displayFilters: null,
         highlightButtonClick: null,
         clearAllFilters: null
     }
 
     componentDidMount = () => {
-        this.setState({handleSubmit: this.props.handleSubmit});
         this.setState({displayFilters: this.props.displayFilters});
         this.setState({highlightButtonClick: this.props.highlightButtonClick});
         this.setState({clearAllFilters: this.props.clearAllFilters})
@@ -25,9 +23,9 @@ class SearchBar extends React.Component {
                         <div className="input-value">
                             <input id="search_result" type="text" placeholder="type something here ..."></input>
                         </div>
-                        <div className="search-button" onClick ={this.state.handleSubmit}>
-                            <div className="submit-button">
-                                <div> Search </div>
+                        <div className="search-button" name="submit">
+                            <div className="submit-button" name="submit">
+                                <div name="submit"> Search </div>
                             </div>
                         </div>
                     </div>

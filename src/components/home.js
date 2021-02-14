@@ -11,7 +11,7 @@ class Home extends React.Component {
     state = {
         newsItems: [],
         search_query: "",
-        api_key: process.env.NEWS_API_KEY || "4df3ca7aebe0417f8d9fde4516eda581",
+        api_key: process.env.NEWS_API_KEY || "9e3fe2dd56a44d4e9bf5394304a433b2",
         filters: {
             relevance: null,
             popularity: null,
@@ -21,20 +21,6 @@ class Home extends React.Component {
         nextPageAvailable: false,
         loading: false
     }
-    handleSubmit = () => {
-       
-        const search_value = document.getElementById('search_result').value;
-
-        if(this.state.search_query !== search_value) {
-            this.setState({
-                search_query: search_value
-            });
-
-            this.fetchNewsData();
-        }
-
-    }
-
 
     highlightButtonClick = (event) => {
         const input_element = event.target.children.length >0 ? event.target.children[0] : null;
@@ -136,8 +122,18 @@ class Home extends React.Component {
                 const search_query = queryElement.value;
                 if(search_query && canSendRequest) {
                     this.fetchNewsData();
+                } 
+            } else if(e.target.getAttribute('name') == "submit") {
+                const search_value = document.getElementById('search_result').value;
+        
+                if(this.state.search_query !== search_value) {
+                    this.setState({
+                        search_query: search_value
+                    });
+        
+                    this.fetchNewsData();
                 }
-                
+        
             }
         });
     }
@@ -165,7 +161,6 @@ class Home extends React.Component {
         }
 
         //For Pagination
-        // console.log(this.state, 'from URL build')
         if(this.state.currentPage > 1) {
             urlString.searchParams.append('page', this.state.currentPage)
         }
@@ -204,16 +199,14 @@ class Home extends React.Component {
         }
 
         else if(page_label === "next") {
-            // console.log(this.state)
+           
             if(this.state.nextPageAvailable) {
                 canSendRequest = true;
                 this.setState({currentPage: ++this.state.currentPage });
-                // console.log(this.state, "this is after increment")
             }
 
         }
         if(canSendRequest) {
-            // setTimeout(() => this.fetchNewsData, 500);
             this.fetchNewsData();
         }
     }
@@ -222,7 +215,6 @@ class Home extends React.Component {
         return (
         <div>
              <SearchBar
-                handleSubmit={this.handlePagination}
                 displayFilters={this.displayFilters}
                 highlightButtonClick={this.highlightButtonClick}
                 clearAllFilters={this.clearAllFilters}
